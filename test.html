@@ -1,0 +1,180 @@
+<!doctype html>
+
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+
+  <title>PayStorm Grid Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/milligram.min.css">
+  <link rel="stylesheet" href="./css/elephantlyCouscous.css">
+  <link rel="stylesheet" href="./css/emojifyBase.min.css">
+  <link rel="stylesheet" href="./css/emojify.min.css">
+  <link rel="stylesheet" href="./css/emojify-emoticons.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <nav id="menu" class="panel" role="navigation">
+        <h3>
+            <a href="https://infraxis.com">
+                <img src="./infralogonew.png" alt="Infraxis" style="border:0;margin-bottom:22px;margin-top:18px;margin-left:15px;">
+            </a>
+            Contents
+        </h3>
+                <ul>
+                        <li data-relative="index.html">
+                <a
+                href="./index.html">
+                About the Software
+                </a>
+            </li>
+                        <li data-relative="diagram.html">
+                <a
+                href="./diagram.html">
+                End-to-End Workflow
+                </a>
+            </li>
+                        <li data-relative="headings/application.html">
+                <a
+                href="./headings/application.html">
+                Application Administration
+                </a>
+            </li>
+                        <li data-relative="headings/tenant.html">
+                <a
+                href="./headings/tenant.html">
+                Tenant Administration
+                </a>
+            </li>
+                        <li data-relative="headings/business.html">
+                <a
+                href="./headings/business.html">
+                Business Support
+                </a>
+            </li>
+                        <li data-relative="headings/technical.html">
+                <a
+                href="./headings/technical.html">
+                Technical Support
+                </a>
+            </li>
+                        <li data-relative="headings/develop.html">
+                <a
+                href="./headings/develop.html">
+                Develop
+                </a>
+            </li>
+                        <li data-relative="example.html">
+                <a
+                href="./example.html">
+                Example Setup
+                </a>
+            </li>
+                        <li data-relative="test.html">
+                <a
+                href="./test.html">
+                test
+                </a>
+            </li>
+                    </ul>
+            </nav>
+    <div class="push">
+        <header>
+            <a href="#menu" class="menu-link">&#9776;</a>
+            <h1>PayStorm Grid Documentation</h1>
+        </header>
+        <div class="container">
+                            <h1 id="fraxis">Fraxis</h1>
+<p>The core Infraxis application platform upon which tenanted, account driven realtime applications can be built</p>
+<h1 id="configuration">Configuration</h1>
+<p>If using containers, the configuration files described below should be stored outside of the containers running Fraxis.</p>
+<h3 id="xstormcfg">xstorm.cfg</h3>
+<p>This is a JSON file that holds the bulk of the customer configurable options. It is separated into <em>tables</em>, below the different tables will be detailed:</p>
+<h4 id="tablename-xstorm-cfg">TABLENAME: XSTORM-CFG</h4>
+<p>This is the old xstorm.ini but in JSON format, the configuration paramaters include:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>institution</td>
+<td>string</td>
+<td>The name of the instituion this Fraxis instance is being used at (e.g. DEMO, CCC, GCS)</td>
+</tr>
+<tr>
+<td>system_id</td>
+<td>int</td>
+<td>A two digit ID that is used to identify the system, this is used as the last two digits of all generated UNIQUEREFs and CLONEREFs. If a single digit is entered then it will be left padded with a 0</td>
+</tr>
+<tr>
+<td>diagnostic_flag</td>
+<td>int</td>
+<td>0 or 1. Controls whether any diagnostics are generated at all. &quot;0&quot; indicates no messages will be generated.</td>
+</tr>
+<tr>
+<td>diagnostic_level</td>
+<td>int</td>
+<td>The Diagnostic Logging level.<br/><br/>Controls which type of messages are generated. Setting a specific diagnostic level automatically includes all the preceding levels.<br/><br/>Following is a description of the diagnostic logging levels. Higher numbers generate more messages and will have a corresponding negative performance impact.<br/><br/>Level 0:  SOFTWARE ERROR:<br/>Only log critical errors indicating that abnormal behaviour was noticed which - specifically - is indicative of a software bug or limitation. Will, without doubt, require a code change to repair.<br/><br/>Level 1:  TECHNICAL ALARM:<br/>Cases where abnormal behaviour is noticed which requires attention and may be related to technical non-business configuration.<br/><br/>Level 2: PROCESSING ALARM:<br/>Cases where abnormal behaviour is noticed which requires attention and is business configuration related.<br/><br/>Level 3: DECISION:<br/>General information which indicates the least common side of a decision or branch has been taken.<br/><br/>Level 4: INFORMATION: General information which indicates either side of a decision has been taken or just normal procedural information.<br/><br/>Level 5: VERBOSE INFO:<br/>As above, but also includes general information which may be reported inside &quot;for&quot; loops (or similar) and therefore may be extremely verbose.</td>
+</tr>
+<tr>
+<td>replication_producer</td>
+<td>string</td>
+<td>The producer to user for the FIREcluster replication unless. For now the default value is the only option that can be used. (Default: libXsFIREProducer.so,GetActiveMQReplicationProducer)</td>
+</tr>
+<tr>
+<td>firecluster_memcache_host</td>
+<td>string</td>
+<td>The host that stores the K/V pairs used for FIREcluster, currently the store is etcd (e.g. <code>http://172.31.3.132:2379</code>)</td>
+</tr>
+<tr>
+<td>firecluster_election_interval</td>
+<td>int</td>
+<td>The time, in seconds, that there must be between DB leader elections. This is to stop the DB leader bouncing when there's comms issues</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fireproducer-activemqini">fireproducer-activemq.ini</h3>
+<p>This file is currently required for the FIREproducer configuration. The only config that should be altered is the broker_url. This should be a comma separated list of the ActiveMQ brokers to use, e.g. <code>tcp://192.168.0.1:61616,tcp://192.168.0.2:61616</code>, the order is the order that they will be used if there is a failover case. Make sure that they are configured in priorty order for the host this is being run on:</p>
+<h4 id="example">Example</h4>
+<pre><code># ActiveMQ broker URL
+broker_url=failover://(tcp://192.168.0.1:61616,tcp://192.168.0.2:61616)
+
+# Messaging type, either queue or topic
+messaging_type=topic
+
+# Boolean flag to inidicate whether to use persistent topic.
+use_persistent_topic=true
+
+# queue/topic name to consume
+service_name=paystorm.replication</code></pre>
+                    </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/bigSlide.js"></script>
+    <script src="./js/emojify.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.menu-link').bigSlide({
+            'easyClose': true
+        });
+    });
+    </script>
+    <script src="./js/elephantlyCouscous.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+
+  <title>PayStorm Grid Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/milligram.min.css">
+  <link rel="stylesheet" href="./css/elephantlyCouscous.css">
+  <link rel="stylesheet" href="./css/emojifyBase.min.css">
+  <link rel="stylesheet" href="./css/emojify.min.css">
+  <link rel="stylesheet" href="./css/emojify-emoticons.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <nav id="menu" class="panel" role="navigation">
+        <h3>
+            <a href="https://infraxis.com">
+                <img src="./infralogonew.png" alt="Infraxis" style="border:0;margin-bottom:22px;margin-top:18px;margin-left:15px;">
+            </a>
+            Contents
+        </h3>
+                <ul>
+                        <li data-relative="index.html">
+                <a
+                href="./index.html">
+                About the Software
+                </a>
+            </li>
+                        <li data-relative="diagram.html">
+                <a
+                href="./diagram.html">
+                End-to-End Workflow
+                </a>
+            </li>
+                        <li data-relative="headings/application.html">
+                <a
+                href="./headings/application.html">
+                Application Administration
+                </a>
+            </li>
+                        <li data-relative="headings/tenant.html">
+                <a
+                href="./headings/tenant.html">
+                Tenant Administration
+                </a>
+            </li>
+                        <li data-relative="headings/business.html">
+                <a
+                href="./headings/business.html">
+                Business Support
+                </a>
+            </li>
+                        <li data-relative="headings/technical.html">
+                <a
+                href="./headings/technical.html">
+                Technical Support
+                </a>
+            </li>
+                        <li data-relative="headings/develop.html">
+                <a
+                href="./headings/develop.html">
+                Develop
+                </a>
+            </li>
+                        <li data-relative="example.html">
+                <a
+                href="./example.html">
+                Example Setup
+                </a>
+            </li>
+                        <li data-relative="test.html">
+                <a
+                href="./test.html">
+                test
+                </a>
+            </li>
+                    </ul>
+            </nav>
+    <div class="push">
+        <header>
+            <a href="#menu" class="menu-link">&#9776;</a>
+            <h1>PayStorm Grid Documentation</h1>
+        </header>
+        <div class="container">
+                            <h1 id="elephantlycouscous">ElephantlyCouscous</h1>
+<p>A theme for couscous by Elephantly</p>
+<p><a href="https://readthedocs.org/">Read The Docs</a> builds websites using a Sphinx theme. <a href="https://github.com/snide/sphinx_rtd_theme">That theme</a> is open source and released under the MIT license.</p>
+<h2 id="usage">Usage</h2>
+<p>To use the template, set it up in your <code>couscous.yml</code> configuration file:</p>
+<pre><code class="language-yaml">template:
+    url: https://github.com/elephantly/ElephantlyCouscous</code></pre>
+<h2 id="configuration">Configuration</h2>
+<p>Here are all the variables you can set in your <code>couscous.yml</code>:</p>
+<pre><code class="language-yaml"># Base URL of the published website
+baseUrl: http://username.github.io/project
+
+# Used to link to the GitHub project
+github:
+    user: myself
+    repo: my-project
+
+title: My project
+subTitle: This is a great project.
+
+# The left menu bar
+menu:
+    items:
+        home:
+            text: FAQ
+            # You can use relative urls
+            relativeUrl: doc/faq.html
+        foo:
+            text: Another link
+            # Or absolute urls
+            absoluteUrl: https://example.com</code></pre>
+<p>This template configuration is base on the excellent <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">Template-ReadTheDocs</a></p>
+                    </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/bigSlide.js"></script>
+    <script src="./js/emojify.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.menu-link').bigSlide({
+            'easyClose': true
+        });
+    });
+    </script>
+    <script src="./js/elephantlyCouscous.js"></script>
+</body>
+</html>
