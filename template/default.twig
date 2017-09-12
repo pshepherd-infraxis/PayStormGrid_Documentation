@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{github.description}}">
+  <meta name="author" content="{{ github.user }}">
+
+  <link rel="stylesheet" href="{{ baseUrl }}/css/normalize.css">
+  <link rel="stylesheet" href="{{ baseUrl }}/css/milligram.min.css">
+  <link rel="stylesheet" href="{{ baseUrl }}/css/elephantlyCouscous.css">
+  <link rel="stylesheet" href="{{ baseUrl }}/css/emojifyBase.min.css">
+  <link rel="stylesheet" href="{{ baseUrl }}/css/emojify.min.css">
+  <link rel="stylesheet" href="{{ baseUrl }}/css/emojify-emoticons.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <nav id="menu" class="panel" role="navigation">
+        <h3>
+            <a href="https://infraxis.com">
+                <img src="{{ baseUrl }}/infralogonew.png" alt="Infraxis" style="border:0;margin-bottom:22px;margin-top:18px;margin-left:15px;">
+            </a>
+            Contents
+        </h3>
+        {% block menu %}
+        <ul>
+            {% for itemId, item in menu.items %}
+            <li data-relative="{{item.relativeUrl}}">
+                <a
+                href="{{ item.absoluteUrl|default(baseUrl ~ '/' ~ item.relativeUrl) }}">
+                {{ item.text|raw }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+    </nav>
+    <div class="push">
+        <header>
+            <a href="#menu" class="menu-link">&#9776;</a>
+            <h1>{{ title }}</h1>
+        </header>
+        <div class="container">
+            {% block content %}
+                {{content|raw}}
+            {% endblock %}
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{{ baseUrl }}/js/bigSlide.js"></script>
+    <script src="{{ baseUrl }}/js/emojify.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.menu-link').bigSlide({
+            'easyClose': true
+        });
+    });
+    </script>
+    <script src="{{ baseUrl }}/js/elephantlyCouscous.js"></script>
+</body>
+</html>
